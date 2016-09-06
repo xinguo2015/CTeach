@@ -1,0 +1,133 @@
+\documentclass{beamer}
+\usepackage{ctex}
+\usepackage{beamerthemetree}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage[autoplay,loop]{animate}
+\usepackage{fancybox}
+\usepackage{movie15}
+\usepackage{verbatim}
+%%-----------------------------------------------
+%\usetheme{default}
+\setbeamertemplate{navigation symbols}{}
+\usetheme{AnnArbor}
+\usecolortheme{lily}
+%%-----------------------------------------------
+\usepackage{tikz}
+\usetikzlibrary{calc,positioning,shapes}
+\usetikzlibrary{arrows,chains,decorations.pathreplacing}
+\usetikzlibrary{shadows} % for using double copy shadow
+%\input{common/flowcharts.tex}
+%%-----------------------------------------------
+\newcommand{\colorize}[2]{{\color{#1} #2 }}
+\newcommand{\items}[1]{\begin{itemize} #1 \end{itemize}}
+\newcommand{\bfy}{{\bf y}}
+\newcommand{\ttd}{{\tt d}}
+%%-----------------------------------------------
+\begin{document}
+%%-----------------------------------------------
+\title{程序设计基础与实验}
+\author{刘新国}
+\institute{浙江大学CAD\&CG国家重点实验室}
+\date{\today}
+%%-----------------------------------------------
+\frame {
+	\titlepage
+}
+%%-----------------------------------------------
+\frame{
+	\frametitle{引言}
+	\tableofcontents
+}
+%%-----------------------------------------------
+\section{C语言介绍}
+\frame { 
+	\frametitle{程序设计过程}
+	% Start the picture
+	\center
+	\begin{tikzpicture}[%
+			>=triangle 60,              % Nice arrows; your taste may be different
+			start chain=going below,    % General flow is top-to-bottom
+			node distance=6mm and 60mm, % Global setup of box spacing
+			every join/.style={norm},   % Default linetype for connecting boxes
+		]
+		% ------------------------------------------------- 
+		% A few box styles 
+		% <on chain> *and* <on grid> reduce the need for manual relative
+		% positioning of nodes
+		\tikzset{
+			% 定义基本形状
+			base/.style={draw, on chain, align=center, minimum height=4ex},
+			terminal/.style={base, rounded corners},
+			process/.style={base, rectangle, text width=6em},
+			decision/.style={base, diamond, aspect=2, text width=5em},
+			multidocument/.style={ shape=tape, draw, fill=white, tape bend top=none, 
+				double copy shadow },
+			% coord node style is used for placing corners of connecting lines
+			coord/.style={coordinate, on chain, on grid, node distance=6mm and 25mm},
+			% nmark node style is used for coordinate debugging marks
+			nmark/.style={draw, cyan, circle, font={\sffamily\bfseries}},
+			% -------------------------------------------------
+			% Connector line styles for different parts of the diagram
+			norm/.style={->, draw, red},
+			free/.style={->, draw, blue},
+			cong/.style={->, draw, green},
+			it/.style={font={\small\itshape}}
+		}
+		% -------------------------------------------------
+		% Start by placing the nodes
+		\node [terminal]      {开始};
+		\node [process, join] (edit) {编辑程序};
+		\node [process, join] (compile) {编译程序};
+		\node [process, join] (link) {链接程序};
+		\node [process, join] (run) {运行测试};
+		\node [terminal, join] {结束};
+		% mark some coordinate for connecting
+		\node [coord, left=4cm of edit] (c1) {};
+		\node [coord, left=4cm of compile] (c2) {};
+		\node [coord, left=4cm of link] (c3) {};
+		\node [coord, left=4cm of run] (c4) {};
+		% output documents
+		\pause
+		\node [process, right =1cm of edit, text width=8em] (code) {源文件(.c/.h)};
+		\draw [->, green] (edit) -- (code);
+		\pause
+		\node [process, right =1cm of compile, text width=8em] (obj) {目标文件(.obj)};
+		\draw [->, green] (compile) -- (obj);
+		\pause
+		\node [process, right =1cm of link, text width=8em] (exe) {可执行文件};
+		\draw [->, green] (link) -- (exe);
+		% error edit
+		\pause
+		\draw [->, blue] (compile)--(c2);
+		\path (compile) to node [fill=white]{编译出错} (c2);
+		\draw [->, blue] (link)--(c3);
+		\path (link) to node [fill=white]{链接出错} (c3);
+		\draw [->, blue] (run)--(c4);
+		\path (run) to node [fill=white]{运行出错} (c4);
+		\draw [->, blue] (c4)|-(edit);
+	\end{tikzpicture}
+}
+
+%%-----------------------------------------------
+\frame{
+	\lstinputlisting[language=C, firstline=1]{code/1-1.c}
+}
+%%-----------------------------------------------
+%%-----------------------------------------------
+\frame{
+	\lstinputlisting[ 
+		language=C, 
+		basicstyle=\small,
+		numbers=left,
+		keywordstyle=\color{blue},
+		numbersep=5pt,
+		commentstyle=\small\color{red},
+		showspaces=false,
+		showtabs=false,
+		frame=shadowbox, 
+		framexleftmargin=5mm, 
+		rulesepcolor=\color{red!20!green!20!blue!20!},
+		firstline=1] {code/1-1.c}
+}
+\end{document}

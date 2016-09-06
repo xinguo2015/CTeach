@@ -1,0 +1,14 @@
+latex/**/*.aux
+latex/**/*.blg
+latex/**/*.dvi
+latex/**/*.brf
+latex/**/*.log
+latex/**/*.lof
+latex/**/*.out
+latex/**/*.toc
+latex/**/*.lot
+latex/**/*.nav
+latex/**/*.snm
+latex/**/*.synctex.gz
+code/**/a.out
+

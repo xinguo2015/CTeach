@@ -1,0 +1,145 @@
+\documentclass{beamer}
+\usepackage{ctex}
+\usepackage{beamerthemetree}
+\usepackage{graphicx}
+\usepackage[autoplay,loop]{animate}
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{fancybox}
+\usepackage{movie15}
+\usepackage{verbatim}
+%\usetheme{default}
+\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+\usecolortheme{lily}
+\newcommand{\colorize}[2]{{\color{#1} #2 }}
+\newcommand{\items}[1]{\begin{itemize} #1 \end{itemize}}
+\newcommand{\bfJ}{{\bf J}}
+\newcommand{\bfI}{{\bf I}}
+\newcommand{\bfx}{{\bf x}}
+\newcommand{\bff}{{\bf f}}
+\newcommand{\bfW}{{\bf W}}
+\newcommand{\bfL}{{\bf L}}
+\newcommand{\bfA}{{\bf A}}
+\newcommand{\bfM}{{\bf M}}
+\newcommand{\bfD}{{\bf D}}
+\newcommand{\bfd}{{\bf d}}
+\newcommand{\bfK}{{\bf K}}
+\newcommand{\bfR}{{\bf R}}
+\newcommand{\bfp}{{\bf p}}
+\newcommand{\bfq}{{\bf q}}
+\newcommand{\bfH}{{\bf H}}
+\newcommand{\bfu}{{\bf u}}
+\newcommand{\bfU}{{\bf U}}
+\newcommand{\bfy}{{\bf y}}
+\newcommand{\ttd}{{\tt d}}
+
+%%-----------------------------------------------
+\setbeamertemplate{navigation symbols}{}
+\begin{document}
+%%-----------------------------------------------
+\title{程序设计基础与实验}
+\author{刘新国}
+\institute{浙江大学CAD\&CG国家重点实验室}
+\date{\today}
+%%-----------------------------------------------
+\frame {
+	\titlepage
+}
+%%-----------------------------------------------
+\frame{
+	\frametitle{课程介绍}
+	\tableofcontents
+}
+%%-----------------------------------------------
+%\comment{} %%%%%%%%%%%%%%%%%%%%
+%%-----------------------------------------------
+\section{参考教材}
+%%-----------------------------------------------
+\frame{ \frametitle{参考教材}
+\items{
+	\item 教材（国家精品课程主讲教材）\\
+	\colorize{blue}{\large《C语言程序设计》（第三版）\\ 何钦铭　颜晖  主编 }
+
+	\item 参考书 \\
+	\colorize{blue}{\large 《C程序设计》\\ 谭浩强　编 }
+}
+}
+%%-----------------------------------------------
+\section{课件资源}
+\frame { \frametitle{课件资源}
+\items{
+	\item 课件主页：\url{http://www.cad.zju.edu.cn/home/xgliu/C2016}
+	\item 在线上机地址：\url{http://10.77.30.138}
+	\item 教师答疑板：\url{http://www.cc98.org}
+	\item 电话：13858115132
+	\item 邮件：xgliu@cad.zju.edu.cn
+	\item 办公室：蒙民伟楼524室，CAD\&CG国家重点实验室
+	}
+}
+%%-----------------------------------------------
+\section{评价考核}
+\frame { \frametitle{评价考核}
+\begin{columns} \begin{column}{0.35\textwidth}
+\items {\item 理论知识部分
+		\items { 
+			\item 练习作业（5 \%）
+			\item 期中测验（5 \%）
+			\items{ \item 春学期最后一周
+					\item 或者下学期第一周
+					\item 随堂考试, 1个小时
+			}
+			\item 期末考试（50 \%）
+			}	
+		\item 上机实验部分
+		\items { 
+			\item 上机实验（15 \%）
+			\item 上机考试（25 \%）
+			}	
+	}
+\end{column}
+\begin{column} {0.65\textwidth}
+\items{ \item 平时表现部分
+		\items { 
+			\item 考勤、问问题、答问题、好程序
+			\item 酌情加分
+			}	
+		\item 机考方法
+		\items{
+			\item 共4题。做出4题得25分，3题22分，2题19分，1题15分
+			\item 得0分者，可以补考1次 \item 补考通过，机考成绩为15分
+			\item \color<+->[rgb]{1,0,0} 
+				  补考不通过，则本课程不及格
+		}
+		\item \colorize{blue}{可能进行微调，和其他班级保持一致}
+	}
+\end{column}
+\end{columns}
+}
+%====================================================
+\end{document}
+
