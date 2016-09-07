@@ -13,7 +13,7 @@ all : $(PDFs)
 
 .PHONY : clean
 
-cleanmiscs:
+clean:
 	for f in ${LIST} ""; do                  \
 		[ -n "$$f" ] || continue;            \
 		echo "cleanning stuff for $$f";      \
@@ -31,7 +31,7 @@ cleanmiscs:
 		rm -f "$$f.synctex.gz"; \
 	done
 
-clean: cleanmiscs
+cleanall: clean
 	echo "deleting pdf";                     \
 	for f in ${LIST} ""; do                  \
 		[ -n "$$f" ] || continue;            \
