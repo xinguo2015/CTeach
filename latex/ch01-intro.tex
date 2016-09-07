@@ -89,13 +89,11 @@
 		\node [coord, left=4cm of run] (c4) {};
 		% output documents
 		\pause
-		\node [process, right =1cm of edit, text width=8em] (code) {源文件(.c/.h)};
+		\node [multidocument, right =1cm of edit, text width=8em] (code) {源文件(.c/.h)};
 		\draw [->, green] (edit) -- (code);
-		\pause
-		\node [process, right =1cm of compile, text width=8em] (obj) {目标文件(.obj)};
+		\node [multidocument, right =1cm of compile, text width=8em] (obj) {目标文件(.obj)};
 		\draw [->, green] (compile) -- (obj);
-		\pause
-		\node [process, right =1cm of link, text width=8em] (exe) {可执行文件};
+		\node [multidocument, right =1cm of link, text width=8em] (exe) {可执行文件};
 		\draw [->, green] (link) -- (exe);
 		% error edit
 		\pause
@@ -110,24 +108,23 @@
 }
 
 %%-----------------------------------------------
-\frame{
-	\lstinputlisting[language=C, firstline=1]{code/1-1.c}
-}
-%%-----------------------------------------------
-%%-----------------------------------------------
+
 \frame{
 	\lstinputlisting[ 
 		language=C, 
-		basicstyle=\small,
-		numbers=left,
+		basicstyle=\small\ttfamily,
+		numbers=none,%left,
 		keywordstyle=\color{blue},
 		numbersep=5pt,
-		commentstyle=\small\color{red},
+		commentstyle=\small\color{green!20!blue!80!},
 		showspaces=false,
-		showtabs=false,
+		%showtabs=true,
+		tabsize=4,
 		frame=shadowbox, 
 		framexleftmargin=5mm, 
 		rulesepcolor=\color{red!20!green!20!blue!20!},
 		firstline=1] {code/1-1.c}
 }
+%%-----------------------------------------------
+
 \end{document}

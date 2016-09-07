@@ -31,3 +31,9 @@ clean:
 		rm -f "$$f.synctex.gz"; \
 	done
 
+cleanall: clean
+	echo "deleting pdf";                     \
+	for f in ${LIST} ""; do                  \
+		[ -n "$$f" ] || continue;            \
+		rm -f "$$f.pdf"; \
+	done

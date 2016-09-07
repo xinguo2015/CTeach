@@ -9,6 +9,8 @@ latex/**/*.toc
 latex/**/*.lot
 latex/**/*.nav
 latex/**/*.snm
+latex/**/*.pdf
 latex/**/*.synctex.gz
 code/**/a.out
+/**/temp/*
 
