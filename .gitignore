@@ -13,4 +13,6 @@ latex/**/*.pdf
 latex/**/*.synctex.gz
 code/**/a.out
 /**/temp/*
+!/**/temp/*.tex
+!/**/temp/Makefile
 

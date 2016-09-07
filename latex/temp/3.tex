@@ -1,0 +1,48 @@
+% Animated beamer frame for tikz
+%Author:
+%wu xuping
+%Date:
+%2013-04-02
+% FileName:
+%main.tex
+% run:
+%  xelatex -shell-escape main
+%  xelatex -shell-escape main
+%required:
+%  Acrobat Reader version > 6
+
+\documentclass{beamer}
+\usepackage{verbatim}
+
+\usepackage{tikz}
+\usepackage[autoplay,loop]{animate}
+
+
+
+\begin{document}
+
+\begin{frame}
+  Animated beamer frame for tikz
+
+  \begin{center}
+  \begin{animateinline}[
+    begin={
+    \begin{tikzpicture}[blue,scale=1,line width=2pt]
+    \useasboundingbox[draw] (0,0)rectangle(4,4);
+    },
+    end={
+     \end{tikzpicture}
+     }
+     ]{2}
+
+    \draw[->](0,0)--(1,1);\newframe
+    \draw[->](0,0)--(2,2);\newframe
+    \draw[->](0,0)--(3,3);\newframe
+    \draw[->](0,0)--(4,4);
+  \end{animateinline}
+  \end{center}
+
+\end{frame}
+
+
+\end{document}

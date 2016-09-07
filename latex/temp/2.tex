@@ -1,0 +1,33 @@
+\documentclass{beamer}
+\usepackage{verbatim}
+
+\usepackage{tikz}
+\usepackage{calc}
+\usepackage{animate}
+
+\newcommand{\plotsin}[2]{%
+ \draw[red,<->] plot[domain=#1:#2]
+(\x,{sin(\x r)});
+}
+
+\begin{document}
+
+\begin{frame}
+绘制正弦函数的动画:\\
+\begin{animateinline}[autoplay,palindrome,
+	 begin={\begin{tikzpicture}[scale=1,line width=1.5pt]
+			\draw[line width=0.5pt,step=0.5,dashed,use as bounding box] (-4,-1.5)grid(4,1.5);
+			\draw[->,blue] (-4,0)--(4,0) node[below left]{$x$};
+			\draw[->,blue]  (0,-1.5)--(0,1.5)node[below left]{$y$}; },
+	 end={\end{tikzpicture}}]{10}
+	     \multiframe{20}{Rxa=-0.2+-0.2, Rxb=0.2+0.2}{%
+	     %Rxa=-0.2,-0.4,...,-4.0
+	     %Rxb=+0.2,+0.4,...,+4.0
+	     \plotsin{\Rxa}{\Rxb}%
+	}%
+\end{animateinline}
+
+\end{frame}
+
+
+\end{document}
