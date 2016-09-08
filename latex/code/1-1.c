@@ -7,7 +7,6 @@ int main(void)                   /* 主函数 */
 	printf("%d\n", factorial(n));/* 调用函数计算阶乘并输出 */
 	return 0;
 }
-
 int factorial(int n)             /* 定义计算n!的函数 */
 {
 	int i, fact = 1;

@@ -1,0 +1,58 @@
+\documentclass{beamer}
+\usepackage{ifthen}
+\usetheme{CambridgeUS}
+
+\newcommand\Switch{0}
+\newcommand\SecInHead{%
+  \ifthenelse{\equal{\Switch}{1}}
+    {\thesection.}{}}
+\newcommand\SubSecInHead{%
+  \ifthenelse{\equal{\Switch}{1}}
+    {\thesubsection. }{}}
+\newcommand\RealSubSecInHead{%
+  \ifthenelse{\equal{\thesubsection}{0}}
+    {}{\SecInHead\SubSecInHead}}
+
+\setbeamertemplate{headline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,right]{section in head/foot}%
+  \usebeamerfont{section in head/foot}\SecInHead\ \insertsectionhead\hspace*{2ex}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,left]{subsection in head/foot}%
+  \usebeamerfont{subsection in head/foot}\hspace*{2ex}\RealSubSecInHead\insertsubsectionhead
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+\begin{document}
+
+\begin{frame}
+Test frame with un-numbered section
+\end{frame}
+
+\renewcommand\Switch{1}
+\section{Section a}
+\begin{frame}
+Test frame with numbered section
+\end{frame}
+
+\renewcommand\Switch{0}
+\begin{frame}
+Test frame with un-numbered section
+\end{frame}
+
+\renewcommand\Switch{1}
+\section{Section a2}
+\begin{frame}
+Test frame with numbered section again
+\end{frame}
+
+\subsection{Subsection a2.1}
+\begin{frame}
+Test frame with numbered subsection again
+\end{frame}
+
+
+\end{document} 

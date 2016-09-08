@@ -18,7 +18,11 @@
 \usetikzlibrary{arrows,chains,decorations.pathreplacing}
 \usetikzlibrary{shadows} % for using double copy shadow
 %\input{common/flowcharts.tex}
+\input{common/codelisting.tex}
 %%-----------------------------------------------
+\newcommand{\mypause}{\pause}
+%\newcommand{\mypause}{} % for no pause
+\newcommand{\minorpause}{\pause}
 \newcommand{\colorize}[2]{{\color{#1} #2 }}
 \newcommand{\items}[1]{\begin{itemize} #1 \end{itemize}}
 \newcommand{\bfy}{{\bf y}}
@@ -35,14 +39,149 @@
 	\titlepage
 }
 %%-----------------------------------------------
-\frame{
-	\frametitle{引言}
+\frame{ \frametitle{第一章~~引言}
 	\tableofcontents
 }
 %%-----------------------------------------------
-\section{C语言介绍}
-\frame { 
-	\frametitle{程序设计过程}
+\section{本章要点}
+\frame { \frametitle{本章要点}
+\items {
+	\item 什么是程序？程序设计语言包含哪些功能？
+	\item 程序设计语言在语法上包含哪些内容？
+	\item 结构化程序设计有哪些基本的控制结构？
+	\item C语言有哪些特点？
+	\item C语言程序的基本框架如何？
+	\item 形成一个可运行的C语言程序主要步骤？
+	\item 如何用流程图描述简单的算法？
+	}
+}
+%%-----------------------------------------------
+\section{一个C语言程序}
+\frame { %\frametitle{一个C语言程序}
+	\lstinputlisting[style=customc, language=C, firstline=1，
+	] {code/1-1.c}
+
+}
+\frame { \frametitle{C语言程序的构成}
+\items {
+	\item 一些函数：factorial, main, scanf, printf \items { 
+		\item factorial和main是自己设计的函数
+		\item scanf和printf是系统提供的函数
+		}
+	\item 函数的构成\items {
+		\item 一些变量：i, fact, 等等
+		\item 一些语句：流程控制，函数调用，计算赋值，等等
+	}
+}
+\minorpause
+\center \colorize{red}{ \large 程序从main函数开始执行}
+}
+
+%%-----------------------------------------------
+\section{程序与程序设计语言}
+\frame { \frametitle{程序与程序设计语言}
+	\begin{columns}[T]
+	\column{0.5\textwidth}
+	\items {
+		\item 程序可看作是\colorize{red}{一系列加工步骤}\items{
+			\item 一系列\colorize{red}{计算机指令}的有序组合
+			\item 指示计算机对数据进行处理，解决实际问题
+			}
+		\item 计算机指令 \items{
+			\item 执行一个最基本的功能
+			\item 算术运算：加减乘除，比较大小等等
+			\item 输入输出，控制指令等等
+			}
+		}
+	\column{0.5\textwidth}
+	\items {
+		\item 指令系统 \items{
+			\item 计算机所能实现的指令集合
+			\item 不同的计算机有不同指令系统 
+			}
+		\item 编写指令程序 \items{
+			\item 繁琐、效率低
+			\item 可读性差、不宜维护
+			\item 与指令系统相关、难以移植
+			\item 需要高级程序设计语言
+			}
+		}
+	\end{columns}
+}
+
+%%-----------------------------------------------
+\frame { \frametitle{程序设计语言}
+	\colorize{red}{可看作是编写程序的一种工具}
+	\begin{columns}[T]
+	\column{0.6\textwidth}
+	\items {
+		\item 程序设计语言的功能 \items{
+			\item 数据表达（data representation）\items {
+				\item 基本类型：整数、浮点数、字符
+				\item 复合类型（用户自定义的）
+				\item 常量、变量
+				}
+			\item 流程控制（flow control）\items{
+				\item 顺序结构（Sequential Control Structure）
+				\item 分支结构（Branch Control Structure）
+				\item 循环结构（Loop Control Structure）
+				}
+			}
+		}
+	\column{0.6\textwidth}
+	\items{
+		\item 程序设计语言的语法\items{
+			\item 单词
+			\item 表达式
+			\item 语句
+			}
+		}
+	\end{columns}
+}
+%%-----------------------------------------------
+\frame { \frametitle{C语言的基本语法}
+\items{
+	\item C语言的单词\items{
+		\item 保留字：\colorize{red}{C语言规定的、赋予它们以特定含义、有专门用途的标识符}。例如：int, float, char, if, else, for, while, ...等等。
+		\item 用户定义的标识符：\colorize{red}{由字母、数字以及下划线组成，且第一个字符必须是字母或下划线}。例如：factorial
+		\item 常量：常量具有数据类型，包括\colorize{red}{整数常量，浮点数常量，字符常量，字符串常量}，等等。例如： 123，5.4，'A'，"hello world"。
+		\item 运算符：表示\colorize{red}{对数据所进行一种运算}。例如：$+ ~ - ~ * ~ / ~ \% ~ > ~ < ~ >= ~ <= ~ == ~ = ~ $，等等
+		}
+	}
+}
+%%-----------------------------------------------
+\frame { \frametitle{C语言的语法}
+\items{
+	\item C语言的语法单位\items{
+		\item 变量定义，例如 int n; 定义了一个整数变量n。
+		\item 表达式：运算对象和运算符的有序组合。运算对象可以常量或者变量。例如： 2+3*n，n+2<5等等
+		\item 语句：最基本的执行单位。程序的功能通过执行一系列的语句来实现。
+		\items{
+			\item 表达式语句
+			\item 分支语句
+			\item 循环语句
+			\item 符合语句
+			\item 函数定义语句
+			\item 函数调用语句
+			}
+		}
+	}
+}
+%%-----------------------------------------------
+\frame { \frametitle{C语言的特点}
+\items{
+	\item 一种结构化语言
+	\item 语句简洁、紧凑，使用方便、灵活
+	\item 易于移植：不包含与硬件有关的因素
+	\item 有强大的处理能力
+	\item 目标代码运行效率高
+	\item 数据类型检查不严格
+	\item 区分大小写
+	}
+}
+%%-----------------------------------------------
+\section { 程序设计的一般过程}
+\frame { \frametitle{程序设计的一般过程}
 	% Start the picture
 	\center
 	\begin{tikzpicture}[%
@@ -88,7 +227,7 @@
 		\node [coord, left=4cm of link] (c3) {};
 		\node [coord, left=4cm of run] (c4) {};
 		% output documents
-		\pause
+		\mypause
 		\node [multidocument, right =1cm of edit, text width=8em] (code) {源文件(.c/.h)};
 		\draw [->, green] (edit) -- (code);
 		\node [multidocument, right =1cm of compile, text width=8em] (obj) {目标文件(.obj)};
@@ -96,7 +235,7 @@
 		\node [multidocument, right =1cm of link, text width=8em] (exe) {可执行文件};
 		\draw [->, green] (link) -- (exe);
 		% error edit
-		\pause
+		\mypause
 		\draw [->, blue] (compile)--(c2);
 		\path (compile) to node [fill=white]{编译出错} (c2);
 		\draw [->, blue] (link)--(c3);
@@ -108,23 +247,6 @@
 }
 
 %%-----------------------------------------------
-
-\frame{
-	\lstinputlisting[ 
-		language=C, 
-		basicstyle=\small\ttfamily,
-		numbers=none,%left,
-		keywordstyle=\color{blue},
-		numbersep=5pt,
-		commentstyle=\small\color{green!20!blue!80!},
-		showspaces=false,
-		%showtabs=true,
-		tabsize=4,
-		frame=shadowbox, 
-		framexleftmargin=5mm, 
-		rulesepcolor=\color{red!20!green!20!blue!20!},
-		firstline=1] {code/1-1.c}
-}
 %%-----------------------------------------------
 
 \end{document}
